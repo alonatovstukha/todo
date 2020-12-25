@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import PropTypes from "prop-types";
 import Context from "../context";
 
+/* <span className="title">{todo.title}</span> */
 
 const styles = {
   li: {
@@ -27,14 +28,11 @@ function TodoItem({ todo, onChange }) {
     classes.push('done')
   }
 
-  const classess = classes.join(' ') + ' ' + "title"
-
   return (
     <li style={styles.li}>
-      <span className={classess}>
-        <input type="checkbox" checked={todo.completed} style={styles.input} onChange={() => onChange(todo.id)}></input>        
-        {todo.title}
-
+      <span className={classes.join(' ')}>
+        <input id="checkbox" type="checkbox" checked={todo.completed} style={styles.input} onChange={() => onChange(todo.id)}></input>        
+        <label for="checkbox" className="title"> {todo.title} </label>
       </span>
       <button className="delete-button" onClick={removeTodo.bind(null, todo.id)}>&times;</button>
     </li>
